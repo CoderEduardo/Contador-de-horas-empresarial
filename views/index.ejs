@@ -10,17 +10,17 @@
 <body>
 
     <h1>Crie uma conta</h1>
-    <form action="/cadatrar" method="POST">
+    <form action="/" method="POST">
         <h3>Nome:</h3>
-        <input type="text" name="nome" placeholder="Digite seu nome:">
+        <input type="text" name="nome" placeholder="Digite seu nome:" required>
         <h3>Email:</h3>
-        <input type="email" name="email" placeholder="Digite seu email:">
+        <input type="email" name="email" placeholder="Digite seu email:" required>
         <h3>Senha:</h3>
-        <input type="password" name="senha" placeholder="Digite a sua senha:">
+        <input type="password" name="senha" placeholder="Digite a sua senha:" required>
         <h3>Deseja criar uma conta como admin?</h3>
         <div>
             <p>Sim</p>
-            <input type="radio" name="admin" value="true">
+            <input type="radio" name="admin"  value="true">
             <p>Não</p>
             <input type="radio" name="admin" value="false">
         </div>

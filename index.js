@@ -10,10 +10,12 @@ app.set("view engine","ejs")
 const connection = require("./model/database/database")
 connection.authenticate().then(()=>{console.log("Banco de dados conectado")}).catch(erro=>{console.log(`Ocorreu um erro: ${erro}`)})
 const loginRota = require("./routes/login")
+const {cadastroController} = require("./controllers/cadastroController")
 
 app.get("/",(req,res)=>{
     res.render("index")
 })
+app.post("/",cadastroController)
 
 app.use("/",loginRota)
 
