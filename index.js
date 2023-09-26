@@ -13,7 +13,7 @@ const loginRota = require("./routes/login")
 const {cadastroController} = require("./controllers/cadastroController")
 
 app.get("/",(req,res)=>{
-    res.render("index")
+    res.render("index",{erroEmail:false,cadastroCompleto:false})
 })
 app.post("/",cadastroController)
 
