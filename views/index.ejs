@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar conta</title>
-</head>
+<%- include('./partials/header.ejs') %>
 
 <body>
+
+    <%- include('./partials/navbar.ejs') %>
 
     <% if (cadastroCompleto) {%>
         <h2 style="color: green;">Castro feito com sucesso</h2>
@@ -36,4 +31,4 @@
 
 </body>
 
-</html>
+<%- include('./partials/footer.ejs') %>
