@@ -19,6 +19,11 @@ nav li{
     font-size: 1.3rem;
 }
 
+nav li a{
+    text-decoration: none;
+    color: white;
+}
+
 .card{
     margin: auto;
     border: solid black 2px;

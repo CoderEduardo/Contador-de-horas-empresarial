@@ -1,8 +1,7 @@
 const express = require("express")
 const router= express.Router()
+const {loginController} = require("../controllers/loginController")
 
-router.get("/login",(req,res)=>{
-    res.send("Rota de login")
-})
+router.get("/login",loginController)
 
 module.exports = router
