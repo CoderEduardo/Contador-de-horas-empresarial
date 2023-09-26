@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+nav li{
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+.card{
+    margin: auto;
+    border: solid black 2px;
+    width: 500px;
+    margin-top:20px;
+    padding: 25px;
+}
