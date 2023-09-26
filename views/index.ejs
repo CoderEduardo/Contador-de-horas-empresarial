@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar conta</title>
+</head>
+
+<body>
+
+    <h1>Crie uma conta</h1>
+    <form action="/cadatrar" method="POST">
+        <h3>Nome:</h3>
+        <input type="text" name="nome" placeholder="Digite seu nome:">
+        <h3>Email:</h3>
+        <input type="email" name="email" placeholder="Digite seu email:">
+        <h3>Senha:</h3>
+        <input type="password" name="senha" placeholder="Digite a sua senha:">
+        <h3>Deseja criar uma conta como admin?</h3>
+        <div>
+            <p>Sim</p>
+            <input type="radio" name="admin" value="true">
+            <p>Não</p>
+            <input type="radio" name="admin" value="false">
+        </div>
+
+        <button>Cadastrar</button>
+    </form>
+
+</body>
+
+</html>

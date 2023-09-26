@@ -11,6 +11,9 @@ const connection = require("./model/database/database")
 connection.authenticate().then(()=>{console.log("Banco de dados conectado")}).catch(erro=>{console.log(`Ocorreu um erro: ${erro}`)})
 const loginRota = require("./routes/login")
 
+app.get("/",(req,res)=>{
+    res.render("index")
+})
 
 app.use("/",loginRota)
 
