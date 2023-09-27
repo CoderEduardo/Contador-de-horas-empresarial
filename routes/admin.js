@@ -3,7 +3,9 @@ const router = express.Router()
 
 
 router.get("/admin",(req,res)=>{
-    res.send("Rota admin")
+    res.render("admin/index",{
+        admin: req.session.usuario.admin
+    })
 })
 
 module.exports = router

@@ -12,21 +12,15 @@ connection.authenticate().then(()=>{console.log("Banco de dados conectado")}).ca
 const loginRota = require("./routes/login")
 const adminRota = require("./routes/admin")
 const {cadastroController} = require("./controllers/cadastroController")
+const auth = require("./middleware/autenticacao")
 const session = require("express-session")
 
 app.use(session({
     secret:"banana",
-    cookie:{maxAge:30000000}
+    cookie:{maxAge:(1000 * 60) * 30}
 }))
 
-function auth(req,res,next){
-    if(req.session.usuario!=undefined){
-        next()
-    }else{
-        res.redirect("/")
-    }
-    
-}
+
 
 app.get("/",(req,res)=>{
     res.render("index",{erroEmail:false,cadastroCompleto:false})
