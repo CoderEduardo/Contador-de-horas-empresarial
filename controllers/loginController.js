@@ -8,20 +8,22 @@ const loginController = (req, res) => {
 }
 
 const autenticacaoController = async (req, res) => {
-   let email = req.body.email
-    Usuario.findOne({
-        where:{email:email}
-    }).then(usuario=>{
-        let senha = req.body.senha
-        const verificarSenha = bcrypt.compareSync(senha,usuario.senha)
-        if(verificarSenha){
-           req.session.usuario = {
-            id:usuario.id,
-            admin:usuario.admin
-           }
-           res.redirect("/login")
+    let email = req.body.email
+    let usuario = await Usuario.findOne({ where: { email: email } })
+    let senha = req.body.senha
+    const verificarSenha = bcrypt.compareSync(senha, usuario.senha)
+    if (verificarSenha) {
+        req.session.usuario = {
+            id: usuario.id,
+            admin: usuario.admin
         }
-    })
+        if(usuario.admin == 1){
+            res.redirect("/admin")
+        }else{
+            res.redirect("/funcionarios")
+        }
+    }
+
 
 
 }
