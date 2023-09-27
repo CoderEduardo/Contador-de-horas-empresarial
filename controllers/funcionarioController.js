@@ -5,12 +5,21 @@ const funcionarioController = async (req, res) => {
 
     res.render("funcionario/index", {
         admin: req.session.usuario.admin,
-        projetos:projetos
+        projetos: projetos
     })
 }
 
-const adicionarTarefa = (req,res)=>{
-
+const adicionarTarefa = async (req, res) => {
+    let id = req.params.id
+    let projeto = await Projeto.findByPk(id)
+    try {
+        if (projeto == undefined) {
+            res.redirect("/funcionarios")
+        }
+        res.render("funcionario/projeto", { projeto: projeto })
+    } catch (erro) {
+        res.redirect("/funcionarios")
+    }
 }
 
-module.exports = { funcionarioController,adicionarTarefa }
+module.exports = { funcionarioController, adicionarTarefa }
