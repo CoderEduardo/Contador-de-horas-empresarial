@@ -17,6 +17,7 @@ const auth = require("./middleware/autenticacao")
 const session = require("express-session")
 const Projeto = require("./model/Projeto/Projeto")
 const Usuario = require("./model/Usuario/Usuario")
+const Tarefa = require("./model/Tarefa/Tarefa")
 
 app.use(session({
     secret:"banana",
