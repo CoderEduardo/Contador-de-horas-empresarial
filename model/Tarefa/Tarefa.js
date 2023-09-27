@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize")
+const{ Sequelize, DataTypes} = require("sequelize")
 const connection = require("../database/database")
 const Projeto = require("../Projeto/Projeto")
 
@@ -8,11 +8,11 @@ const Tarefa = connection.define("tarefas", {
         allowNull: false
     },
     horaEntrada: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.STRING,
         allowNull: false
     },
     horaSaida: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.STRING,
         allowNull: false
     },
     relatorio: {
