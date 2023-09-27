@@ -4,4 +4,8 @@ const adminController = (req,res)=>{
     })
 }
 
-module.exports = {adminController}
+const cadastrarProjeto = (req,res)=>{
+    res.render("admin/cadastrarProjeto")
+}
+
+module.exports = {adminController, cadastrarProjeto}
