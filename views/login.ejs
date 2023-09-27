@@ -4,20 +4,12 @@
    
     <div class="card">
         <h1 style="text-align: center;">Faça seu login</h1>
-    <form action="/" method="POST">
-        <h3>Nome:</h3>
-        <input type="text" name="nome" placeholder="Digite seu nome:" required>
+    <form action="/login" method="POST">
         <h3>Email:</h3>
         <input type="email" name="email" placeholder="Digite seu email:" required>
         <h3>Senha:</h3>
         <input type="password" name="senha" placeholder="Digite a sua senha:" required>
         <h3>Deseja entrar como admin?</h3>
-        <div>
-            <p>Sim</p>
-            <input type="radio" name="admin"  value="true">
-            <p>Não</p>
-            <input type="radio" name="admin" value="false">
-        </div>
 
         <button>Entrar</button>
     </form>
