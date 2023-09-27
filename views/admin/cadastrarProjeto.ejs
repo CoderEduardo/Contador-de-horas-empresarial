@@ -1,1 +1,13 @@
-<h1>Página de cadastrar projeto</h1>
+<%- include("./partials/header.ejs") %>
+<body>
+    <div class="card">
+        <h1 style="text-align: center;">Crie um projeto:</h1>
+    <form action="/cadastrar" method="POST">
+        <h3>Nome:</h3>
+        <input type="text" name="nome" placeholder="Digite seu nome:" required>
+        <h3>Descrição:</h3>
+        <input type="text" name="descricao" placeholder="Descrição do projeto:" required>
+        <button>Cadastrar</button>
+    </form>
+    </div>
+</body>
