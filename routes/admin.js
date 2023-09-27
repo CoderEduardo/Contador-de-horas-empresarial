@@ -1,11 +1,8 @@
 const express = require("express")
 const router = express.Router()
+const {adminController} = require("../controllers/adminController")
 
 
-router.get("/admin",(req,res)=>{
-    res.render("admin/index",{
-        admin: req.session.usuario.admin
-    })
-})
+router.get("/admin",adminController)
 
 module.exports = router
