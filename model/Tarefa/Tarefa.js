@@ -15,7 +15,7 @@ const Tarefa = connection.define("tarefas", {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    descricao: {
+    relatorio: {
         type: Sequelize.STRING
     }
 })

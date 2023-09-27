@@ -46,4 +46,11 @@ nav li a{
     padding: 25px;
     margin: 25px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.projeto a{
+    text-decoration: none;
+    color: black;
 }

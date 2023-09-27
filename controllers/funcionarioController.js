@@ -9,4 +9,8 @@ const funcionarioController = async (req, res) => {
     })
 }
 
-module.exports = { funcionarioController }
+const adicionarTarefa = (req,res)=>{
+
+}
+
+module.exports = { funcionarioController,adicionarTarefa }
