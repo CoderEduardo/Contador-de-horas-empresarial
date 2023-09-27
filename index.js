@@ -15,6 +15,8 @@ const funcionarioRota = require("./routes/funcionario")
 const {cadastroController} = require("./controllers/cadastroController")
 const auth = require("./middleware/autenticacao")
 const session = require("express-session")
+const Projeto = require("./model/Projeto/Projeto")
+const Usuario = require("./model/Usuario/Usuario")
 
 app.use(session({
     secret:"banana",
