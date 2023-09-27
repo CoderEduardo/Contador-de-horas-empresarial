@@ -54,3 +54,10 @@ nav li a{
     text-decoration: none;
     color: black;
 }
+
+.projeto-card{
+    width: 80%;
+    height: 20px;
+    border: solid green 2px;
+    padding: 25px;
+}

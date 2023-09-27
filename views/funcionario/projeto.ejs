@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .projeto {
+            width: 80%;
+            padding: 20px;
+            border: solid green 2px;
+            margin: auto;
+        }
+
+        .container{
+            margin-top:25px;
+        }
+    </style>
+    <title>Document</title>
 </head>
+
 <body>
-    
-    <%= projeto.nome %>
+
+
+    <% if (admin==0) {%>
+
+        <div class="container">
+            <div class="projeto">
+               <h1>Nome do Projeto:</h1>
+               <h3>
+                <%= projeto.nome %>
+            </h3>
+            </div>
+        </div>
+
+        <%} else{%>
+            <h1>Você não tem acesso a essa rota, você é um admin</h1>
+            <% } %>
+
 
 </body>
+
 </html>

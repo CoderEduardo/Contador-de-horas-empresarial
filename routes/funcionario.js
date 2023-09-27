@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
-const {funcionarioController, adicionarTarefa} = require("../controllers/funcionarioController")
+const {funcionarioController, projetoController} = require("../controllers/funcionarioController")
 
 router.get("/funcionarios",funcionarioController)
-router.get("/projeto/:id",adicionarTarefa)
+router.get("/projeto/:id",projetoController)
 
 module.exports = router
