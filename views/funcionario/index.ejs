@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Página de funcionarios</title>
 </head>
+
 <body>
-    
-    <% if (admin == 0) {%>
-         <h1>Essa é a página de funcionarios</h1>
-        <%} else{%>
-            <h1>Você não tem acesso a essa rota, você é um admin</h1>
-            <% } %>
+
+    <% if (admin==0) {%>
+
+        <% projetos.forEach(projeto=> { %>
+            <div class="container">
+                <div class="projeto">
+                    <h1> <%= projeto.nome %></h1>
+                 </div>
+            </div>
+            <% }); %>
+
+                <%} else{%>
+                    <h1>Você não tem acesso a essa rota, você é um admin</h1>
+                    <% } %>
 
 </body>
+
 </html>
