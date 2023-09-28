@@ -1,4 +1,5 @@
 const Projeto = require("../model/Projeto/Projeto")
+const Tarefa = require('../model/Tarefa/Tarefa')
 
 const adminController = async (req, res) => {
   try {
@@ -30,7 +31,8 @@ const adminProjeto = async (req,res)=>{
     let id = req.params.id
     try{
       let projeto = await Projeto.findByPk(id)
-      res.render('admin/projeto',{projeto})
+      let tarefas = await Tarefa.findAll({where:{projetoId:id}})
+      res.render('admin/projetoAdmin',{projeto,tarefas})
     }catch(erro){
       res.redirect("/admin")
     }
