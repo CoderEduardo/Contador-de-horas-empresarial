@@ -22,6 +22,12 @@
         .container {
             margin-top: 25px;
         }
+
+        .tarefa{
+            border: solid green 2px;
+            padding: 25px;
+            margin: 25px;
+        }
     </style>
     <title>Document</title>
 </head>
@@ -37,6 +43,7 @@
                 <h3>
                     <%= projeto.nome %>
                 </h3>
+                <h2>Admin Criador: <%= usuario.nome %></h2>
                 <br>
                 <h3>Adicionar Tarefa Feita:</h3>
                 <form action="/adicionar" method="POST">
@@ -52,12 +59,26 @@
                     <br>
                     <button>Criar Tarefa</button>
                 </form>
+
+                <h2>Tarefas Concluidas</h2>
+
+                <% tarefas.forEach(tarefa=> {%>
+                  <div class="tarefa">
+                    
+                    <h3>
+                        Nome da Tarefa: 
+                        <%= tarefa.nome %> <br>
+                    </h3>
+                   <h3>Hora de Entrada:</h3>
+                   <%= tarefa.horaEntrada %> 
+                    <h3>Hora de saída:</h3>
+                    <%= tarefa.horaSaida %> 
+                    <h3>Relatório:</h3>
+                    <%= tarefa.relatorio%>
+                  </div>
+                 <% }); %>
+
             </div>
-
-            <% tarefas.forEach(tarefa=> {%>
-                <%= tarefa.nome %>
-            <% }); %>
-
         </div>
 
         <%} else{%>

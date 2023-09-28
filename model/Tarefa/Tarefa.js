@@ -1,6 +1,7 @@
 const{ Sequelize, DataTypes} = require("sequelize")
 const connection = require("../database/database")
 const Projeto = require("../Projeto/Projeto")
+const Usuario = require('../Usuario/Usuario')
 
 const Tarefa = connection.define("tarefas", {
     nome: {
@@ -22,6 +23,9 @@ const Tarefa = connection.define("tarefas", {
 
 Tarefa.belongsTo(Projeto)
 Projeto.hasMany(Tarefa) 
+//
+Tarefa.belongsTo(Usuario)
+Usuario.hasMany(Tarefa)
 
 Tarefa.sync({force:false})
 
