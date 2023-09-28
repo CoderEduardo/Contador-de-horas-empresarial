@@ -17,7 +17,13 @@ const projetoController = async (req, res) => {
         if (projeto == undefined) {
             res.redirect("/funcionarios")
         }
-        res.render("funcionario/projeto", { projeto: projeto, admin:req.session.usuario.admin })
+
+        Tarefa.findAll({
+            where:{projetoId:id}
+        }).then(tarefas=>{
+            res.render("funcionario/projeto", { projeto: projeto, admin:req.session.usuario.admin, tarefas:tarefas })
+        })
+        
     } catch (erro) {
         res.redirect("/funcionarios")
     }
