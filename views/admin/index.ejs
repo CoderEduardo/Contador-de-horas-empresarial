@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Página admin</title>
 </head>
 <body>
     
     <% if (admin == 1) {%>
         <a href="admin/cadastrarProjeto">Criar um novo projeto</a>
+
+        <% projetos.forEach(projeto => {%>
+            <div class="card">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <%= projeto.nome %>
+                    <a href="" style="text-decoration: none;">Ver projeto</a>
+                </div>
+            </div>
+        <% }); %> 
+
     <% } else{ %>
         <h1>Rota não autorizada, você não é um admin</h1>
     <% } %>
