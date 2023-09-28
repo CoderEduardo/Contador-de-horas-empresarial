@@ -26,4 +26,14 @@ const cadastrar = async (req, res) => {
   }
 }
 
-module.exports = { adminController, cadastrarProjeto, cadastrar }
+const adminProjeto = async (req,res)=>{
+    let id = req.params.id
+    try{
+      let projeto = await Projeto.findByPk(id)
+      res.render('admin/projeto',{projeto})
+    }catch(erro){
+      res.redirect("/admin")
+    }
+}
+
+module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto }
