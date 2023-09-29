@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('../partials/header.ejs') %>
     <style>
         body {
             margin: 0;
@@ -23,69 +18,92 @@
             margin-top: 25px;
         }
 
-        .tarefa{
+        .tarefa {
             border: solid green 2px;
             padding: 25px;
             margin: 25px;
         }
+
+        nav {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        nav li {
+            list-style: none;
+            font-size: 1.3rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
-    <title>Document</title>
-</head>
-
-<body>
 
 
-    <% if (admin==0) {%>
-
-        <div class="container">
-            <div class="projeto">
-                <h1>Nome do Projeto:</h1>
-                <h3>
-                    <%= projeto.nome %>
-                </h3>
-                <h2>Admin Criador: <%= usuario.nome %></h2>
-                <br>
-                <h3>Adicionar Tarefa Feita:</h3>
-                <form action="/adicionar" method="POST">
-                    <h3>Nome:</h3>
-                    <input type="text" name="nome" placeholder="Digite o nome:">
-                    <h3>Relatório:</h3>
-                    <textarea style="width: 500px; height: 300px;" name="relatorio"></textarea>
-                    <h3>Data de entrada e horário:</h3>
-                    <input type="datetime-local" name="horaEntrada">
-                    <h3>Data de saida e horário:</h3>
-                    <input type="datetime-local" name="horaSaida">
-                    <input type="hidden" value="<%= projeto.id %>" name="projetoId">
-                    <br>
-                    <button>Criar Tarefa</button>
-                </form>
-
-                <h2>Tarefas Concluidas</h2>
-
-                <% tarefas.forEach(tarefa=> {%>
-                  <div class="tarefa">
-                    
-                    <h3>
-                        Nome da Tarefa: 
-                        <%= tarefa.nome %> <br>
-                    </h3>
-                   <h3>Hora de Entrada:</h3>
-                   <%= tarefa.horaEntrada %> 
-                    <h3>Hora de saída:</h3>
-                    <%= tarefa.horaSaida %> 
-                    <h3>Relatório:</h3>
-                    <%= tarefa.relatorio%>
-                  </div>
-                 <% }); %>
-
-            </div>
-        </div>
-
-        <%} else{%>
-            <h1>Você não tem acesso a essa rota, você é um admin</h1>
-            <% } %>
+    <body>
 
 
-</body>
+        <% if (admin==0) {%>
+            <%- include('../partials/navbar.ejs') %>
+                <div class="container">
+                    <div class="projeto">
+                        <h1>Nome do Projeto:</h1>
+                        <h3>
+                            <%= projeto.nome %>
+                        </h3>
+                        <h2>Admin Criador: <%= projeto.usuario.nome %>
+                        </h2>
+                        <br>
+                        <h3>Adicionar Tarefa Feita:</h3>
+                        <form action="/adicionar" method="POST">
+                            <h3>Nome:</h3>
+                            <input type="text" name="nome" placeholder="Digite o nome:">
+                            <h3>Relatório:</h3>
+                            <textarea style="width: 500px; height: 300px;" name="relatorio"></textarea>
+                            <h3>Data de entrada e horário:</h3>
+                            <input type="datetime-local" name="horaEntrada">
+                            <h3>Data de saida e horário:</h3>
+                            <input type="datetime-local" name="horaSaida">
+                            <br><br>
+                            <button>Criar Tarefa</button>
+                        </form>
 
-</html>
+                        <h2>Tarefas Concluidas</h2>
+
+                        <% tarefas.forEach(tarefa=> {; %>
+                            <div class="tarefa">
+
+                                <h3>
+                                    Nome da Tarefa: <%= tarefa.nome %>
+                                </h3>
+                                <h3>Hora de Entrada: <span style="font-weight: 400;"><%= tarefa.horaEntrada %></h3></span>
+
+                                <h3>Hora de saída: <span style="font-weight: 400;"><%= tarefa.horaSaida %></h3></span>
+
+                                <h3>Relatório:</h3>
+                                <p>
+                                    <%= tarefa.relatorio %>
+                                </p>
+                            </div>
+                         <% }) %>
+
+                        
+
+
+                    </div>
+                </div>
+
+                <%} else{%>
+                    <h1>Você não tem acesso a essa rota, você é um admin</h1>
+                    <% } %>
+
+
+    </body>
+
+    </html>
+    <%- include('../partials/footer.ejs') %>

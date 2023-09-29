@@ -14,21 +14,15 @@ const funcionarioController = async (req, res) => {
 const projetoController = async (req, res) => {
     let id = req.params.id
     try {
-        let projeto = await Projeto.findByPk(id)
-        if (projeto == undefined) {
-            res.redirect("/funcionarios")
-        }
-
-        Tarefa.findAll({
-            where: { projetoId: id }
-        }).then(tarefas => {
-            let usuarioId = projeto.usuarioId
-            Usuario.findOne({where:{id:usuarioId}}).then((usuario)=>{
-                res.render("funcionario/projeto", { projeto: projeto, admin: req.session.usuario.admin, tarefas: tarefas,usuario:usuario })
-            })
+        let projeto = await Projeto.findOne({
+            where:{id:id},
+            include:[{model:Usuario}]
         })
-
-    } catch (erro) {
+        let tarefas = await Tarefa.findAll({
+            where:{projetoId:projeto.id}
+        })
+        res.render("funcionario/projeto",{projeto,admin:req.session.usuario.admin,tarefas})
+    }  catch (erro) {
         res.redirect("/funcionarios")
     }
 }
