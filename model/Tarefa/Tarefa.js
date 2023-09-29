@@ -9,12 +9,20 @@ const Tarefa = connection.define("tarefas", {
         allowNull: false
     },
     horaEntrada: {
-        type: Sequelize.DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     horaSaida: {
-        type: Sequelize.DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
+    },
+    ano:{
+        type:DataTypes.INTEGER,
+        allowNull:false
+    },
+    totalHoras:{
+        type:DataTypes.INTEGER,
+        allowNull:false
     },
     relatorio: {
         type: Sequelize.TEXT
