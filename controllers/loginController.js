@@ -3,6 +3,11 @@ const bcrypt = require("bcryptjs")
 const JWT = require("jsonwebtoken")
 const secret = "banana"
 
+const logout = (req,res)=>{
+    req.session.usuario = undefined
+    res.redirect("/")
+}
+
 const loginController = (req, res) => {
     res.render("login")
 }
@@ -32,4 +37,4 @@ const autenticacaoController = async (req, res) => {
 
 }
 
-module.exports = { loginController, autenticacaoController }
+module.exports = { loginController, autenticacaoController, logout}
