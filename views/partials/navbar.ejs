@@ -2,8 +2,12 @@
 <nav>
     <h2>Empresa</h2>
     <ul>
-        <li><a href="/login">Login</a></li>
+        <% if (login == undefined ) {%>
+            <li><a href="/login">Login</a></li>
+       <%  }else{%>
         <li><a href="/sair">Sair</a></li>
+       <% }   %>
+        
     </ul>
 </nav>
 

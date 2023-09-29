@@ -7,7 +7,8 @@ const funcionarioController = async (req, res) => {
 
     res.render("funcionario/index", {
         admin: req.session.usuario.admin,
-        projetos: projetos
+        projetos: projetos,
+        login:req.session.usuario
     })
 }
 
@@ -21,7 +22,7 @@ const projetoController = async (req, res) => {
         let tarefas = await Tarefa.findAll({
             where:{projetoId:projeto.id}
         })
-        res.render("funcionario/projeto",{projeto,admin:req.session.usuario.admin,tarefas})
+        res.render("funcionario/projeto",{projeto,admin:req.session.usuario.admin,tarefas,login:req.session.usuario})
     }  catch (erro) {
         res.redirect("/funcionarios")
     }

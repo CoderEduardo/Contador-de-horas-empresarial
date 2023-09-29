@@ -1,15 +1,81 @@
 <%- include('../partials/header.ejs') %>
-<body>
-    <%- include('../partials/navbar.ejs') %>
-    <div class="card">
-        <h1 style="text-align: center;">Crie um projeto:</h1>
-    <form action="/cadastrar" method="POST">
-        <h3>Nome:</h3>
-        <input type="text" name="nome" placeholder="Digite seu nome:" required>
-        <h3>Descrição:</h3>
-        <input type="text" name="descricao" placeholder="Descrição do projeto:" required>
-        <button>Cadastrar</button>
-    </form>
-    </div>
-</body>
-<%- include('../partials/footer.ejs') %>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .projeto {
+            width: 80%;
+            border: solid green 2px;
+            padding: 25px;
+            margin: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .countedo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarefa {
+            border: solid green 2px;
+            width: 90%;
+            margin: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        nav li {
+            list-style: none;
+            font-size: 1.3rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .card {
+            margin: auto;
+            border: solid black 2px;
+            width: 500px;
+            margin-top: 20px;
+            padding: 25px;
+        }
+    </style>
+
+    <body>
+        <%- include('../partials/navbar.ejs') %>
+            <div class="card">
+                <h1 style="text-align: center;">Crie um projeto:</h1>
+                <form action="/cadastrar" method="POST">
+                    <h3>Nome:</h3>
+                    <input type="text" name="nome" placeholder="Digite seu nome:" required>
+                    <h3>Descrição:</h3>
+                    <input type="text" name="descricao" placeholder="Descrição do projeto:" required>
+                    <br><br>
+                    <button>Cadastrar</button>
+                </form>
+            </div>
+    </body>
+    <%- include('../partials/footer.ejs') %>

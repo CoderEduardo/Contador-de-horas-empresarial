@@ -24,14 +24,10 @@ app.use(session({
     cookie:{maxAge:(1000 * 60) * 30}
 }))
 
-
-
 app.get("/",(req,res)=>{
-    res.render("index",{erroEmail:false,cadastroCompleto:false})
+    res.render("index",{erroEmail:false,cadastroCompleto:false,login:req.session.usuario})
 })
 app.post("/",cadastroController)
-
-
 
 app.use("/",loginRota)
 app.use("/",auth,adminRota)
