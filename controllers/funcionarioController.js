@@ -29,17 +29,23 @@ const projetoController = async (req, res) => {
 }
 
 const adicionar = async (req, res) => {
-    let id = req.body.projetoId
+    let id = req.body.id
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
     let horaSaida = req.body.horaSaida
+    let ano = req.body.ano
+    let anoBr = ano.substring(0,4)
+    let mesBr = ano.substring(5,7)
+    let diaBr = ano.substring(8,10)
     let relatorio = req.body.relatorio
 
-    Tarefa.create({
+    await Tarefa.create({
         nome: nome,
         horaEntrada: horaEntrada,
         horaSaida: horaSaida,
         relatorio: relatorio,
+        ano:`${diaBr}/${mesBr}/${anoBr}`,
+        totalHoras:1,
         projetoId: id,
         usuarioId: req.session.usuario.id
     }).then(() => {

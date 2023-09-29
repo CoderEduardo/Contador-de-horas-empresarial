@@ -63,12 +63,15 @@
                         <form action="/adicionar" method="POST">
                             <h3>Nome:</h3>
                             <input type="text" name="nome" placeholder="Digite o nome:">
+                            <h3>Horário de entrada</h3>
+                            <input type="time" name="horaEntrada">
+                            <h3>Horário de saída:</h3>
+                            <input type="time" name="horaSaida">
+                            <h3>Mês e ano:</h3>
+                            <input type="date" name="ano">
                             <h3>Relatório:</h3>
                             <textarea style="width: 500px; height: 300px;" name="relatorio"></textarea>
-                            <h3>Data de entrada e horário:</h3>
-                            <input type="datetime-local" name="horaEntrada">
-                            <h3>Data de saida e horário:</h3>
-                            <input type="datetime-local" name="horaSaida">
+                            <input type="hidden" name="id" value="<%= projeto.id %>">
                             <br><br>
                             <button>Criar Tarefa</button>
                         </form>
@@ -85,6 +88,7 @@
 
                                 <h3>Hora de saída: <span style="font-weight: 400;"><%= tarefa.horaSaida %></h3></span>
 
+                                <h3>Ano: <span style="font-weight: 400;"><%= tarefa.ano %></h3></span>
                                 <h3>Relatório:</h3>
                                 <p>
                                     <%= tarefa.relatorio %>
