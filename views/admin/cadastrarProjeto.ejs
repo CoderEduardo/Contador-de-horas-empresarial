@@ -1,5 +1,6 @@
-<%- include("./partials/header.ejs") %>
+<%- include('../partials/header.ejs') %>
 <body>
+    <%- include('../partials/navbar.ejs') %>
     <div class="card">
         <h1 style="text-align: center;">Crie um projeto:</h1>
     <form action="/cadastrar" method="POST">
@@ -11,3 +12,4 @@
     </form>
     </div>
 </body>
+<%- include('../partials/footer.ejs') %>

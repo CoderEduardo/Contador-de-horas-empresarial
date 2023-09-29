@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<%- include('../partials/header.ejs') %>
 
     <style>
         body {
@@ -41,41 +35,66 @@
             display: flex;
             flex-direction: column;
         }
+
+        nav {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        nav li {
+            list-style: none;
+            font-size: 1.3rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 
-</head>
 
-<body>
 
-    <div class="container">
-        <div class="projeto">
-            <h2>Nome do Projeto: <%= projeto.nome %>
-            </h2>
-            <div class="conteudo">
-                <h3 style="display: inline-block;">Descrição:</h3>
-                <p style="display: inline-block;">
-                    <%= projeto.descricao %>
-                </p>
-                <h3>Últimas Tarefas completas:</h3>
-                    <% tarefas.forEach(tarefa => { %>
-                        <div style="display: flex; justify-content: center;">
-                            <div class="tarefa">
-                                <h3>Nome da tarefa: <%= tarefa.nome %> </h3>
-                                <h3 style="display: inline-block;">Relatório:</h3>
-                                <p style="display: inline-block;">
-                                  <%= tarefa.relatorio %>
-                                </p>
-                                <h3>Horário de entrada: <span style="font-weight: 300;"><%= tarefa.horaEntrada %></span> </h3>
-                                <h3>Horário de saída: <span style="font-weight: 300;" ><%= tarefa.horaSaida %></span></h3>
-                                <p>Criador da tarefa:<%= tarefa.usuario.nome %></p>
+    <body>
+        <%- include('../partials/navbar.ejs') %>
+            <div class="container">
+                <div class="projeto">
+                    <h2>Nome do Projeto: <%= projeto.nome %>
+                    </h2>
+                    <div class="conteudo">
+                        <h3 style="display: inline-block;">Descrição:</h3>
+                        <p style="display: inline-block;">
+                            <%= projeto.descricao %>
+                        </p>
+                        <h3>Últimas Tarefas completas:</h3>
+                        <% tarefas.forEach(tarefa=> { %>
+                            <div style="display: flex; justify-content: center;">
+                                <div class="tarefa">
+                                    <h3>Nome da tarefa: <%= tarefa.nome %>
+                                    </h3>
+                                    <h3 style="display: inline-block;">Relatório:</h3>
+                                    <p style="display: inline-block;">
+                                        <%= tarefa.relatorio %>
+                                    </p>
+                                    <h3>Horário de entrada: <span style="font-weight: 300;"></span> </h3>
+                                    <h3>Horário de saída: <span style="font-weight: 300;">
+                                            <%= tarefa.horaSaida %>
+                                        </span></h3>
+                                    <p>Criador da tarefa:<%= tarefa.usuario.nome %>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    <% }); %>
-                    <p>Admin criador do projeto: <%= projeto.usuario.nome %></p>
+                            <% }); %>
+                                <p>Admin criador do projeto: <%= projeto.usuario.nome %>
+                                </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-</body>
+    </body>
 
-</html>
+    </html>
+    <%- include('../partials/footer.ejs') %>
