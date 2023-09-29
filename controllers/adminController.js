@@ -32,13 +32,20 @@ const cadastrar = async (req, res) => {
 const adminProjeto = async (req,res)=>{
     let id = req.params.id
     try{
-      let projeto = await Projeto.findByPk(id)
-      let tarefas = await Tarefa.findAll({where:{projetoId:id}})
-      let usuarioAdmin = await Usuario.findOne({where:{id:projeto.usuarioId}})
-      res.render('admin/projetoAdmin',{projeto,tarefas,usuarioAdmin})
+      let projeto = await Projeto.findOne({
+        where:{id:id},
+        include:[{model:Usuario}],
+      })
+      let tarefas = await Tarefa.findAll({
+        where:{projetoId:projeto.id},
+        include:[{model:Usuario}]
+      })
+      res.render('admin/projetoAdmin',{projeto,tarefas})
     }catch(erro){
       res.send(erro)
     }
+
+  
 }
 
 module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto }
