@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize")
+const {Sequelize, DataTypes} = require("sequelize")
 const connection = require("../database/database")
 const Usuario = require("../Usuario/Usuario")
 
@@ -9,7 +9,11 @@ const Projeto = connection.define("projetos",{
     },
     descricao:{
         type:Sequelize.TEXT,
-    }
+    },
+    totalHoras:{
+        type:DataTypes.INTEGER,
+        defaultValue:0
+      },
 })
 
 Projeto.belongsTo(Usuario)

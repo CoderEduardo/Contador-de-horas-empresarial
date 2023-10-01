@@ -48,11 +48,12 @@ const adicionar = async (req, res) => {
         horas: horas,
         projetoId: id,
         usuarioId: req.session.usuario.id
-    }).then(()=> {
+    }).then(() => {
         res.redirect("/projeto/" + id)
     }).catch((erro) => {
         res.send(erro)
     })
+    Projeto.increment({ totalHoras: horas }, { where: { id: id } })
 }
 
 module.exports = { funcionarioController, projetoController, adicionar }

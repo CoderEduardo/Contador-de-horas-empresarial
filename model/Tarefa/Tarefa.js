@@ -23,9 +23,6 @@ const Tarefa = connection.define("tarefas", {
     horas:{
         type:DataTypes.INTEGER
     },
-    totalHoras:{
-      type:DataTypes.INTEGER  
-    },
     relatorio: {
         type: Sequelize.TEXT
     }
