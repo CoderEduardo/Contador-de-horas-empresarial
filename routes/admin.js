@@ -8,7 +8,7 @@ router.get("/admin/cadastrarProjeto",cadastrarProjeto)
 router.post("/cadastrar",cadastrar)
 router.get('/admin/projeto/:id', adminProjeto)
 router.get("/admin/editar/:id",editarProjeto)
-router.delete("/deletar",deletar)
-router.put("/atualizar",atualizar)
+router.delete("/",deletar)
+router.put("/",atualizar)
 
 module.exports = router

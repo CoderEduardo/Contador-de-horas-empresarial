@@ -2,10 +2,11 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        button{
-            color: white; 
-            border: 0px; padding: 10px; 
-            font-weight: bold; 
+        button {
+            color: white;
+            border: 0px;
+            padding: 10px;
+            font-weight: bold;
             border-radius: 10px;
         }
     </style>
@@ -16,21 +17,26 @@
                 <div style="display: flex; justify-content: center;">
                     <div class="editar-container">
                         <h1>Editar Projeto</h1>
-                        <form action="/atualizar" method="POST">
-                            <h3>Nome:</h3>
-                            <input type="text" name="nome" placeholder="Digite seu nome:" required>
-                            <h3>Descrição:</h3>
-                            <input type="text" name="descricao" placeholder="Descrição do projeto:" required>
-                            <br><br>
-                            <button style="background-color: green;">Editar</button>
-                            <form action="/deletar">
+                            <form action="/?_method=PUT"  method="POST">
+                                <h3>Nome:</h3>
+                                <input type="text" name="nome" value="<%= projeto.nome %>"
+                                    placeholder="Digite seu nome:" required>
+                                <h3>Descrição:</h3>
+                                <input type="text" name="descricao" value="<%= projeto.descricao %>"
+                                    placeholder="Descrição do projeto:" required>
+                                <input type="hidden" name="id" value="<%= projeto.id %>">
+                                <br><br>
+                                <button style="background-color: green;">Editar</button>
+                            </form>
+                            <br>
+                            <form action="/?_method=DELETE" method="POST">
+                                <input type="hidden" name="id" value="<%= projeto.id %>">
                                 <button style="background-color: red;">Deletar</button>
                             </form>
-                        </form>
                     </div>
                 </div>
                 <% }else{ %>
                     <h1>Você não tem acesso a essa página</h1>
-                <% } %>
+                    <% } %>
     </body>
     <%- include('../partials/footer.ejs') %>
