@@ -29,7 +29,7 @@
                                 <button style="background-color: green;">Editar</button>
                             </form>
                             <br>
-                            <form action="/?_method=DELETE" method="POST">
+                            <form action="/?_method=DELETE" onsubmit="verificarDelecao(this)" method="POST">
                                 <input type="hidden" name="id" value="<%= projeto.id %>">
                                 <button style="background-color: red;">Deletar</button>
                             </form>
@@ -39,4 +39,15 @@
                     <h1>Você não tem acesso a essa página</h1>
                     <% } %>
     </body>
+
+    <script>
+        function verificarDelecao(form){
+            event.preventDefault()
+            let confirmacao = confirm("Você quer mesmo deletar essa categoria?")
+            if(confirmacao){
+                form.submit()
+            }
+        }
+    </script>
+
     <%- include('../partials/footer.ejs') %>
