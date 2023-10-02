@@ -33,7 +33,14 @@ const adicionar = async (req, res) => {
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
     let horaSaida = req.body.horaSaida
-    let horas = parseInt(horaSaida.replace(":", ".")) - parseInt(horaEntrada.replace(":", "."))
+    let a = parseInt(horaSaida.replace(":", ".")) - parseInt(horaEntrada.replace(":", "."))
+    let horario = a
+    if(horario >= 0){
+      horario = a
+    }else{
+        horario = parseInt(a + 24)
+    }
+    let horas = horario
     let ano = req.body.ano
     let anoBr = ano.substring(0, 4)
     let mesBr = ano.substring(5, 7)
