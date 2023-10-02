@@ -16,9 +16,12 @@ const Tarefa = connection.define("tarefas", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    ano:{
+    anoString:{
         type:DataTypes.STRING,
         allowNull:false
+    },
+    ano:{
+        type:DataTypes.DATEONLY
     },
     horas:{
         type:DataTypes.INTEGER

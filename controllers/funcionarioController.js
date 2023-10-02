@@ -43,16 +43,18 @@ const adicionar = async (req, res) => {
     }
     let horas = horario
     let ano = req.body.ano
-    let anoBr = ano.substring(0, 4)
-    let mesBr = ano.substring(5, 7)
-    let diaBr = ano.substring(8, 10)
+    let anoString = req.body.ano
+    let anoBr = anoString.substring(0, 4)
+    let mesBr = anoString.substring(5, 7)
+    let diaBr = anoString.substring(8, 10)
     let relatorio = req.body.relatorio
     await Tarefa.create({
         nome: nome,
         horaEntrada: horaEntrada,
         horaSaida: horaSaida,
         relatorio: relatorio,
-        ano: `${diaBr}/${mesBr}/${anoBr}`,
+        anoString: `${diaBr}/${mesBr}/${anoBr}`,
+        ano:ano,
         horas: horas,
         projetoId: id,
         usuarioId: req.session.usuario.id
