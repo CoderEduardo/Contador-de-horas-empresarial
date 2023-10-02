@@ -3,8 +3,6 @@
     
     <% if (admin == 1) {%>
         <%- include('../partials/navbar.ejs') %>
-        <a href="admin/cadastrarProjeto">Criar um novo projeto</a>
-
         <% projetos.forEach(projeto => {%>
             <div class="card">
                 <div style="display: flex; align-items: center; justify-content: space-between;">

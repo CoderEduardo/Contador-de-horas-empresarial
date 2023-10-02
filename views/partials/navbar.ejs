@@ -1,19 +1,49 @@
-
 <nav>
     <style>
-        #empresa{
+        #empresa {
             text-decoration: none;
             color: white;
         }
+
+        ul {
+            display: flex;
+            align-items: center;
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+        }
+
+        .link {
+            margin-right: 30px;
+            font-size: 0.9rem;
+        }
+
+        .link a{
+            color: rgb(169, 169, 169);
+        }
     </style>
-    <a href="/" id="empresa"><h2>Empresa</h2></a>
+    <a href="/" id="empresa">
+        <h2>Empresa</h2>
+    </a>
     <ul>
-        <% if (login == undefined ) {%>
+        <% if (login==undefined ) {%>
             <li><a href="/login">Login</a></li>
-       <%  }else{%>
-        <li><a href="/sair">Sair</a></li>
-       <% }   %>
-        
+            <% }else{%>
+
+                <% if (login.admin==0) {%>
+                    <div class="links">
+                        <li class="link"><a href="/funcionarios">Trabalhos</a></li>
+                        <li><a href="/sair">Sair</a></li>
+                    </div>
+                    <% } else{ %>
+                        <div class="links">
+                            <li class="link"><a href="/admin/cadastrarProjeto">Novo Projeto</a></li>
+                            <li><a href="/sair">Sair</a></li>
+                        </div>
+                        <% } %>
+                            <% } %>
+
     </ul>
 </nav>
-
