@@ -40,7 +40,7 @@ nav li a{
 }
 
 .projeto{
-    border: solid green 2px;
+    border: solid black 2px;
     width: 800px;
     height: 75px;
     padding: 25px;
@@ -58,6 +58,6 @@ nav li a{
 .projeto-card{
     width: 80%;
     height: 20px;
-    border: solid green 2px;
+    border: solid black 2px;
     padding: 25px;
 }
