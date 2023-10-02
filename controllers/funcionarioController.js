@@ -78,6 +78,8 @@ const editar = async (req, res) => {
 
 const atualizar = async (req, res) => {
     let id = req.body.id
+    let tarefa = await Tarefa.findByPk(id) 
+    await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: id } })
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
     let horaSaida = req.body.horaSaida
@@ -108,6 +110,7 @@ const atualizar = async (req, res) => {
             },
             {where:{id:id}}
         )
+        Projeto.increment({ totalHoras: horas }, { where: { id: id } })
         res.redirect("projeto/" + id)
     } catch (erro) {
         res.send(erro)
