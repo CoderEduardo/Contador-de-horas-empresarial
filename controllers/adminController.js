@@ -5,7 +5,7 @@ const Usuario = require("../model/Usuario/Usuario")
 
 const adminController = async (req, res) => {
   try {
-    let projetos = await Projeto.findAll()
+    let projetos = await Projeto.findAll({order:[['id','DESC']]})
     res.render("admin/index", { admin: req.session.usuario.admin, projetos, login: req.session.usuario, tag: "Admin" })
   } catch (erro) {
     res.redirect('/')

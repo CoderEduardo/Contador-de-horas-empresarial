@@ -21,7 +21,8 @@ const projetoController = async (req, res) => {
             include: [{ model: Usuario }]
         })
         let tarefas = await Tarefa.findAll({
-            where: { projetoId: projeto.id, usuarioId: req.session.usuario.id }
+            where: { projetoId: projeto.id, usuarioId: req.session.usuario.id },
+            order:[['id','DESC']]
         })
         res.render("funcionario/projeto", { projeto, admin: req.session.usuario.admin, tarefas, login: req.session.usuario, tag: `Projeto ${projeto.nome}` })
     } catch (erro) {
