@@ -1,6 +1,16 @@
 <%- include('../partials/header.ejs') %>
     <link rel="stylesheet" href="/style.css">
 
+    <style>
+        button {
+            color: white;
+            border: 0px;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+    </style>
+
     <body>
         <% if (login==0) { %>
             <%- include('../partials/navbar.ejs') %>
@@ -8,7 +18,7 @@
             
             <div style="display: flex; justify-content: center;">
                 <div class="editar-container">
-                    <form action="/adicionar" method="POST">
+                    <form action="/tarefa?_method=PUT" method="POST">
                         <h3>Nome:</h3>
                         <input type="text" name="nome" value="<%= tarefa.nome %>" placeholder="Digite o nome:">
                         <h3>Horário de entrada</h3>
@@ -18,9 +28,14 @@
                         <h3>Mês e ano:</h3>
                         <input type="date" name="ano" value="<%= tarefa.ano %>">
                         <h3>Relatório:</h3>
+                        <input type="hidden" name="id" value="<%= tarefa.id %>">
                         <textarea style="width: 500px; height: 300px;" name="relatorio"><%= tarefa.relatorio %></textarea>
                         <br><br>
-                        <button>Atualizar Tarefa</button>
+                        <button style="background-color: green;">Atualizar Tarefa</button>
+                    </form>
+                    <br>
+                    <form action="">
+                        <button style="background-color: red;">Deletar Tarefa</button>
                     </form>
                 </div>
             </div>

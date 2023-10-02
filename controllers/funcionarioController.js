@@ -9,7 +9,7 @@ const funcionarioController = async (req, res) => {
         admin: req.session.usuario.admin,
         projetos: projetos,
         login: req.session.usuario,
-        tag:"Trabalhos"
+        tag: "Trabalhos"
     })
 }
 
@@ -21,9 +21,9 @@ const projetoController = async (req, res) => {
             include: [{ model: Usuario }]
         })
         let tarefas = await Tarefa.findAll({
-            where: { projetoId: projeto.id, usuarioId:req.session.usuario.id }
+            where: { projetoId: projeto.id, usuarioId: req.session.usuario.id }
         })
-        res.render("funcionario/projeto", { projeto, admin: req.session.usuario.admin, tarefas, login: req.session.usuario,tag:`Projeto ${projeto.nome}` })
+        res.render("funcionario/projeto", { projeto, admin: req.session.usuario.admin, tarefas, login: req.session.usuario, tag: `Projeto ${projeto.nome}` })
     } catch (erro) {
         res.redirect("/funcionarios")
     }
@@ -36,9 +36,9 @@ const adicionar = async (req, res) => {
     let horaSaida = req.body.horaSaida
     let a = parseInt(horaSaida.replace(":", ".")) - parseInt(horaEntrada.replace(":", "."))
     let horario = a
-    if(horario >= 0){
-      horario = a
-    }else{
+    if (horario >= 0) {
+        horario = a
+    } else {
         horario = parseInt(a + 24)
     }
     let horas = horario
@@ -54,7 +54,7 @@ const adicionar = async (req, res) => {
         horaSaida: horaSaida,
         relatorio: relatorio,
         anoString: `${diaBr}/${mesBr}/${anoBr}`,
-        ano:ano,
+        ano: ano,
         horas: horas,
         projetoId: id,
         usuarioId: req.session.usuario.id
@@ -66,14 +66,52 @@ const adicionar = async (req, res) => {
     Projeto.increment({ totalHoras: horas }, { where: { id: id } })
 }
 
-const atualizar = async (req,res)=>{
-    let id = req.params.id 
-    try{
+const editar = async (req, res) => {
+    let id = req.params.id
+    try {
         let tarefa = await Tarefa.findByPk(id)
-        res.render("funcionario/atualizar",{tarefa,tag:`Editar ${tarefa.nome}`,login:req.session.usuario.admin})
-    }catch(erro){
+        res.render("funcionario/atualizar", { tarefa, tag: `Editar ${tarefa.nome}`, login: req.session.usuario.admin })
+    } catch (erro) {
         res.send(erro)
     }
 }
 
-module.exports = { funcionarioController, projetoController, adicionar, atualizar }
+const atualizar = async (req, res) => {
+    let id = req.body.id
+    let nome = req.body.nome
+    let horaEntrada = req.body.horaEntrada
+    let horaSaida = req.body.horaSaida
+    let a = parseInt(horaSaida.replace(":", ".")) - parseInt(horaEntrada.replace(":", "."))
+    let horario = a
+    if (horario >= 0) {
+        horario = a
+    } else {
+        horario = parseInt(a + 24)
+    }
+    let horas = horario
+    let ano = req.body.ano
+    let anoString = req.body.ano
+    let anoBr = anoString.substring(0, 4)
+    let mesBr = anoString.substring(5, 7)
+    let diaBr = anoString.substring(8, 10)
+    let relatorio = req.body.relatorio
+    try {
+       await Tarefa.update(
+            {
+                nome: nome,
+                horaEntrada: horaEntrada,
+                horaSaida: horaSaida,
+                relatorio: relatorio,
+                anoString: `${diaBr}/${mesBr}/${anoBr}`,
+                ano: ano,
+                horas: horas
+            },
+            {where:{id:id}}
+        )
+        res.redirect("projeto/" + id)
+    } catch (erro) {
+        res.send(erro)
+    }
+}
+
+module.exports = { funcionarioController, projetoController, adicionar, atualizar, editar }
