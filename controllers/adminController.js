@@ -5,7 +5,7 @@ const Usuario = require("../model/Usuario/Usuario")
 
 const adminController = async (req, res) => {
   try {
-    let projetos = await Projeto.findAll({order:[['id','DESC']]})
+    let projetos = await Projeto.findAll({ order: [['id', 'DESC']] })
     res.render("admin/index", { admin: req.session.usuario.admin, projetos, login: req.session.usuario, tag: "Admin" })
   } catch (erro) {
     res.redirect('/')
@@ -74,10 +74,18 @@ const atualizar = async (req, res) => {
     await Projeto.update(
       { nome: nome, descricao: descricao },
       { where: { id: id } })
-      res.redirect("/admin")
+    res.redirect("/admin")
   } catch (erro) {
     res.send(erro)
   }
 }
 
-module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto, deletar, atualizar }
+const funcionarios = async (req, res) => {
+      let tarefa = await Tarefa.findAll({
+        include:[{model:Usuario}]
+      })
+
+      res.render("admin/funcionario",{tarefa,login:req.session.usuario.admin,tag:"Funcionários"})
+}
+
+module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto, deletar, atualizar, funcionarios }
