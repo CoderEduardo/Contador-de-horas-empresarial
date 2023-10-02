@@ -1,0 +1,53 @@
+<%- include('../partials/header.ejs') %>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        button {
+            color: white;
+            border: 0px;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+    </style>
+
+    <body>
+        <% if (login==1) {%>
+            <%- include('../partials/navbar.ejs') %>
+                <div style="display: flex; justify-content: center;">
+                    <div class="editar-container">
+                        <h1>Editar Projeto</h1>
+                            <form action="/?_method=PUT"  method="POST">
+                                <h3>Nome:</h3>
+                                <input type="text" name="nome" value="<%= projeto.nome %>"
+                                    placeholder="Digite seu nome:" required>
+                                <h3>Descrição:</h3>
+                                <input type="text" name="descricao" value="<%= projeto.descricao %>"
+                                    placeholder="Descrição do projeto:" required>
+                                <input type="hidden" name="id" value="<%= projeto.id %>">
+                                <br><br>
+                                <button style="background-color: green;">Editar</button>
+                            </form>
+                            <br>
+                            <form action="/?_method=DELETE" onsubmit="verificarDelecao(this)" method="POST">
+                                <input type="hidden" name="id" value="<%= projeto.id %>">
+                                <button style="background-color: red;">Deletar</button>
+                            </form>
+                    </div>
+                </div>
+                <% }else{ %>
+                    <h1>Você não tem acesso a essa página</h1>
+                    <% } %>
+    </body>
+
+    <script>
+        function verificarDelecao(form){
+            event.preventDefault()
+            let confirmacao = confirm("Você quer mesmo deletar essa categoria?")
+            if(confirmacao){
+                form.submit()
+            }
+        }
+    </script>
+
+    <%- include('../partials/footer.ejs') %>

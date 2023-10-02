@@ -1,21 +1,33 @@
 <%- include('../partials/header.ejs') %>
-<body>
-    
-    <% if (admin == 1) {%>
-        <%- include('../partials/navbar.ejs') %>
-        <% projetos.forEach(projeto => {%>
-            <div class="card">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <%= projeto.nome %>
-                    <a href="/admin/projeto/<%= projeto.id %>" style="text-decoration: none; color: black;">Ver projeto</a>
-                </div>
-            </div>
-        <% }); %> 
 
-    <% } else{ %>
-        <h1>Rota não autorizada, você não é um admin</h1>
-    <% } %>
-</body>
-</html>
+    <body>
 
-<%- include('../partials/footer.ejs') %>
+        <% if (admin==1) {%>
+            <%- include('../partials/navbar.ejs') %>
+                <% projetos.forEach(projeto=> {%>
+                    <div class="card">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <a href="/admin/projeto/<%= projeto.id %>" style="text-decoration: none; color: black;">  <%= projeto.nome %></a>
+                            </div>
+                                <div style="display: flex; align-items: center;">
+                                    <a href="/admin/editar/<%= projeto.id %>"><img src="images/editar.png" width="30px" alt=""></a>
+                                </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+                        <% } else{ %>
+                            <h1>Rota não autorizada, você não é um admin</h1>
+                            <% } %>
+    </body>
+
+    </html>
+
+    <style>
+        .nada{
+            margin-right: 20px;
+        }
+    </style>
+
+    <%- include('../partials/footer.ejs') %>
