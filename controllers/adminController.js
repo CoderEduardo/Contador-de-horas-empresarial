@@ -69,7 +69,15 @@ const deletar = async (req, res) => {
 }
 
 const atualizar = async (req, res) => {
-
+  let { id, nome, descricao } = req.body
+  try {
+    await Projeto.update(
+      { nome: nome, descricao: descricao },
+      { where: { id: id } })
+      res.redirect("/admin")
+  } catch (erro) {
+    res.send(erro)
+  }
 }
 
 module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto, deletar, atualizar }
