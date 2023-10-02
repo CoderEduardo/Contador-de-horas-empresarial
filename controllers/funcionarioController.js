@@ -64,4 +64,14 @@ const adicionar = async (req, res) => {
     Projeto.increment({ totalHoras: horas }, { where: { id: id } })
 }
 
-module.exports = { funcionarioController, projetoController, adicionar }
+const atualizar = async (req,res)=>{
+    let id = req.params.id 
+    try{
+        let tarefa = await Tarefa.findByPk(id)
+        res.render("funcionario/atualizar",{tarefa,tag:`Editar ${tarefa.nome}`,login:req.session.usuario.admin})
+    }catch(erro){
+        res.send(erro)
+    }
+}
+
+module.exports = { funcionarioController, projetoController, adicionar, atualizar }

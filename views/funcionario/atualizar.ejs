@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+    <link rel="stylesheet" href="/style.css">
+
+    <body>
+        <% if (login==0) { %>
+            <%- include('../partials/navbar.ejs') %>
+            <h1>Página de atualização</h1>
+            <%= tarefa.nome %>
+           <%  } else{ %>
+            <h1>Você não tem acesso a essa página</h1>
+           <% } %>
+    </body>
+    <%- include('../partials/footer.ejs') %>

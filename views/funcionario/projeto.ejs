@@ -81,9 +81,12 @@
                         <% tarefas.forEach(tarefa=> {; %>
                             <div class="tarefa">
 
-                                <h3>
-                                    Nome da Tarefa: <%= tarefa.nome %>
+                               <a href="/atualizar/<%= tarefa.id %>"> <img src="/images/editar.png" style="float: right;" width="30px" alt="imagem"></a>
+
+                                <h3 style="margin-top: 5px;">
+                                    Nome da Tarefa:<span  style="font-weight: 400;"> <%= tarefa.nome %> </span>
                                 </h3>
+
                                 <h3>Hora de Entrada: <span style="font-weight: 400;"><%= tarefa.horaEntrada %></h3></span>
 
                                 <h3>Hora de saída: <span style="font-weight: 400;"><%= tarefa.horaSaida %></h3></span>
