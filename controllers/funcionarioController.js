@@ -65,6 +65,7 @@ const adicionar = async (req, res) => {
         res.send(erro)
     })
     Projeto.increment({ totalHoras: horas }, { where: { id: id } })
+    Usuario.increment({horasTrabalhadas:horas}, {where:{id:req.session.usuario.id}})
 }
 
 const editar = async (req, res) => {
@@ -83,6 +84,7 @@ const atualizar = async (req, res) => {
     let projetoId = req.body.projetoId
     let tarefa = await Tarefa.findByPk(id)
     await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: projetoId } })
+    await Usuario.decrement({horasTrabalhadas:tarefa.horas}, {where:{id:req.session.usuario.id}})
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
     let horaSaida = req.body.horaSaida
@@ -101,6 +103,7 @@ const atualizar = async (req, res) => {
     let diaBr = anoString.substring(8, 10)
     let relatorio = req.body.relatorio
     await Projeto.increment({ totalHoras: horas }, { where: { id: projetoId } })
+    await Usuario.increment({horasTrabalhadas:horas}, {where:{id:req.session.usuario.id}})
     try {
         await Tarefa.update(
             {

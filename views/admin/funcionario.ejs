@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+
+<link rel="stylesheet" href="/style.css">
+
+<body>
+    <% if (login == 1) {%>
+        <%- include('../partials/navbar.ejs') %>
+        <table>
+        <tr>
+            <th>Nome</th>
+            <th>Horas trabalhadas</th>
+        </tr>
+        <% usuarios.forEach(usuario => {%>
+                    <tr>
+                        <td><%= usuario.nome %></td>
+                        <td><%= usuario.horasTrabalhadas %> Horas</td>  
+                    </tr>
+        <% });  %>
+    </table>
+    <% } else{ %>
+        <h1>Você não tem acesso a essa rota</h1>
+    <% } %>
+</body>
+
+<%- include('../partials/footer.ejs') %>

@@ -16,7 +16,11 @@ const Usuario = connection.define("usuarios",{
     },
     admin:{
         type:Sequelize.BOOLEAN
-    }
+    },
+    horasTrabalhadas:{
+        type:Sequelize.INTEGER,
+        defaultValue: 0
+    } 
 })
 
 Usuario.sync({force:false})
