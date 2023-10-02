@@ -81,11 +81,11 @@ const atualizar = async (req, res) => {
 }
 
 const funcionarios = async (req, res) => {
-      let tarefa = await Tarefa.findAll({
+      let tarefas = await Tarefa.findAll({
         include:[{model:Usuario}]
       })
 
-      res.render("admin/funcionario",{tarefa,login:req.session.usuario.admin,tag:"Funcionários"})
+      res.render("admin/funcionario",{tarefas,login:req.session.usuario.admin,tag:"Funcionários"})
 }
 
 module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto, deletar, atualizar, funcionarios }
