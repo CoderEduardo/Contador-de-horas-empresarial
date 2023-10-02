@@ -5,9 +5,18 @@
 <body>
     <% if (login == 1) {%>
         <%- include('../partials/navbar.ejs') %>
+        <table border="1" >
+        <tr>
+            <th>Nome</th>
+            <th>Horas trabalhadas</th>
+        </tr>
         <% usuarios.forEach(usuario => {%>
-            <%= usuario.nome %> <br>
+                    <tr>
+                        <td><%= usuario.nome %></td>
+                        <td><%= usuario.horasTrabalhadas %></td>  
+                    </tr>
         <% });  %>
+    </table>
     <% } else{ %>
         <h1>Você não tem acesso a essa rota</h1>
     <% } %>
