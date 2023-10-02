@@ -42,6 +42,20 @@
             text-decoration: none;
             color: white;
         }
+        
+        textarea{
+            width: 500px; height: 300px;
+        }
+
+        @media (max-width: 600px) {
+            .projeto{
+                box-sizing: border-box;
+            }
+
+            textarea{
+                width: 260px;
+            }
+        }
     </style>
 
 
@@ -70,7 +84,7 @@
                             <h3>Mês e ano:</h3>
                             <input type="date" name="ano">
                             <h3>Relatório:</h3>
-                            <textarea style="width: 500px; height: 300px;" name="relatorio"></textarea>
+                            <textarea name="relatorio"></textarea>
                             <input type="hidden" name="id" value="<%= projeto.id %>">
                             <br><br>
                             <button>Criar Tarefa</button>
@@ -81,25 +95,34 @@
                         <% tarefas.forEach(tarefa=> {; %>
                             <div class="tarefa">
 
-                               <a href="/atualizar/<%= tarefa.id %>"> <img src="/images/editar.png" style="float: right;" width="30px" alt="imagem"></a>
+                                <a href="/atualizar/<%= tarefa.id %>"> <img src="/images/editar.png"
+                                        style="float: right;" width="30px" alt="imagem"></a>
 
                                 <h3 style="margin-top: 5px;">
-                                    Nome da Tarefa:<span  style="font-weight: 400;"> <%= tarefa.nome %> </span>
+                                    Nome da Tarefa:<span style="font-weight: 400;">
+                                        <%= tarefa.nome %>
+                                    </span>
                                 </h3>
 
-                                <h3>Hora de Entrada: <span style="font-weight: 400;"><%= tarefa.horaEntrada %></h3></span>
+                                <h3>Hora de Entrada: <span style="font-weight: 400;">
+                                        <%= tarefa.horaEntrada %>
+                                </h3></span>
 
-                                <h3>Hora de saída: <span style="font-weight: 400;"><%= tarefa.horaSaida %></h3></span>
+                                <h3>Hora de saída: <span style="font-weight: 400;">
+                                        <%= tarefa.horaSaida %>
+                                </h3></span>
 
-                                <h3>Data: <span style="font-weight: 400;"><%= tarefa.anoString %></h3></span>
+                                <h3>Data: <span style="font-weight: 400;">
+                                        <%= tarefa.anoString %>
+                                </h3></span>
                                 <h3>Relatório:</h3>
                                 <p>
                                     <%= tarefa.relatorio %>
                                 </p>
                             </div>
-                         <% }) %>
+                            <% }) %>
 
-                        
+
 
 
                     </div>

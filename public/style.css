@@ -79,5 +79,16 @@ table, tr, th, td{
     padding: 20px;
 }
 
+@media (max-width: 600px) {
+    .card{
+        box-sizing: border-box;
+        border: solid black 2px;
+        width: 100%;
+        margin-top: 25px;
+        margin: auto;
+        padding: 10px;
+    }
+  }
+
 
 

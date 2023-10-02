@@ -9,42 +9,53 @@
             font-weight: bold;
             border-radius: 10px;
         }
+
+        textarea {
+            width: 500px;
+            height: 300px;
+        }
+
+        @media (max-width: 600px) {
+            textarea {
+                width: 280px;
+            }
+        }
     </style>
 
     <body>
         <% if (login==0) { %>
             <%- include('../partials/navbar.ejs') %>
-            <h1 style="text-align: center; margin-top: 35px;">Atualizar Tarefa</h1>
-            
-            <div style="display: flex; justify-content: center;">
-                <div class="editar-container">
-                    <form action="/tarefa?_method=PUT" method="POST">
-                        <h3>Nome:</h3>
-                        <input type="text" name="nome" value="<%= tarefa.nome %>" placeholder="Digite o nome:">
-                        <h3>Horário de entrada</h3>
-                        <input type="time" name="horaEntrada" value="<%= tarefa.horaEntrada %>">
-                        <h3>Horário de saída:</h3>
-                        <input type="time" name="horaSaida" value="<%= tarefa.horaSaida %>">
-                        <h3>Mês e ano:</h3>
-                        <input type="date" name="ano" value="<%= tarefa.ano %>">
-                        <h3>Relatório:</h3>
-                        <input type="hidden" name="id" value="<%= tarefa.id %>">
-                        <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
-                        <textarea style="width: 500px; height: 300px;" name="relatorio"><%= tarefa.relatorio %></textarea>
-                        <br><br>
-                        <button style="background-color: green;">Atualizar Tarefa</button>
-                    </form>
-                    <br>
-                    <form action="/tarefa?_method=DELETE" method="POST">
-                        <input type="hidden" name="id" value="<%= tarefa.id %>">
-                        <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
-                        <button style="background-color: red;">Deletar Tarefa</button>
-                    </form>
-                </div>
-            </div>
+                <h1 style="text-align: center; margin-top: 35px;">Atualizar Tarefa</h1>
 
-           <%  } else{ %>
-            <h1>Você não tem acesso a essa página</h1>
-           <% } %>
+                <div style="display: flex; justify-content: center;">
+                    <div class="editar-container">
+                        <form action="/tarefa?_method=PUT" method="POST">
+                            <h3>Nome:</h3>
+                            <input type="text" name="nome" value="<%= tarefa.nome %>" placeholder="Digite o nome:">
+                            <h3>Horário de entrada</h3>
+                            <input type="time" name="horaEntrada" value="<%= tarefa.horaEntrada %>">
+                            <h3>Horário de saída:</h3>
+                            <input type="time" name="horaSaida" value="<%= tarefa.horaSaida %>">
+                            <h3>Mês e ano:</h3>
+                            <input type="date" name="ano" value="<%= tarefa.ano %>">
+                            <h3>Relatório:</h3>
+                            <input type="hidden" name="id" value="<%= tarefa.id %>">
+                            <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
+                            <textarea name="relatorio"><%= tarefa.relatorio %></textarea>
+                            <br><br>
+                            <button style="background-color: green;">Atualizar Tarefa</button>
+                        </form>
+                        <br>
+                        <form action="/tarefa?_method=DELETE" method="POST">
+                            <input type="hidden" name="id" value="<%= tarefa.id %>">
+                            <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
+                            <button style="background-color: red;">Deletar Tarefa</button>
+                        </form>
+                    </div>
+                </div>
+
+                <% } else{ %>
+                    <h1>Você não tem acesso a essa página</h1>
+                    <% } %>
     </body>
     <%- include('../partials/footer.ejs') %>

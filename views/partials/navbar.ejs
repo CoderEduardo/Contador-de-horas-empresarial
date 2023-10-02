@@ -1,48 +1,80 @@
-<nav>
-    <style>
-        #empresa {
-            text-decoration: none;
-            color: white;
-        }
+<style>
+    body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        ul {
-            display: flex;
-            align-items: center;
-        }
+    #empresa {
+        text-decoration: none;
+        color: white;
+    }
 
+    ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+    }
+
+    .link {
+        margin-right: 30px;
+        font-size: 0.9rem;
+    }
+
+    .link a {
+        color: rgb(169, 169, 169);
+    }
+
+    @media (max-width: 600px) {
         .links {
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
         .link {
-            margin-right: 30px;
-            font-size: 0.9rem;
+            padding: 10px;
         }
 
-        .link a{
-            color: rgb(169, 169, 169);
+        .sair{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-right: 30px;
         }
-    </style>
+
+        nav {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>
+
+<nav>
+
     <a href="/" id="empresa">
         <h2>Empresa</h2>
     </a>
     <ul>
         <% if (login==undefined ) {%>
-            <li><a href="/login">Login</a></li>
+            <li class="sair"><a href="/login">Login</a></li>
             <% }else{%>
 
                 <% if (login.admin==0) {%>
                     <div class="links">
                         <li class="link"><a href="/funcionarios">Trabalhos</a></li>
-                        <li><a href="/sair">Sair</a></li>
+                        <li class="sair"><a href="/sair">Sair</a></li>
                     </div>
                     <% } else{ %>
                         <div class="links">
                             <li class="link"><a href="/admin/funcionarios">Funcionários</a></li>
                             <li class="link"><a href="/admin">Projetos</a></li>
                             <li class="link"><a href="/admin/cadastrarProjeto">Novo Projeto</a></li>
-                            <li><a href="/sair">Sair</a></li>
+                            <li class="sair"><a href="/sair">Sair</a></li>
                         </div>
                         <% } %>
                             <% } %>
