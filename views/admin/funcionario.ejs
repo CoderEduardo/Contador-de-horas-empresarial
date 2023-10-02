@@ -5,8 +5,8 @@
 <body>
     <% if (login == 1) {%>
         <%- include('../partials/navbar.ejs') %>
-        <% tarefas.forEach(tarefa => {%>
-            <%= tarefa.usuario.nome %> <br>
+        <% usuarios.forEach(usuario => {%>
+            <%= usuario.nome %> <br>
         <% });  %>
     <% } else{ %>
         <h1>Você não tem acesso a essa rota</h1>
