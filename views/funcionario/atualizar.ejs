@@ -35,7 +35,9 @@
                         <button style="background-color: green;">Atualizar Tarefa</button>
                     </form>
                     <br>
-                    <form action="">
+                    <form action="/tarefa?_method=DELETE" method="POST">
+                        <input type="hidden" name="id" value="<%= tarefa.id %>">
+                        <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
                         <button style="background-color: red;">Deletar Tarefa</button>
                     </form>
                 </div>

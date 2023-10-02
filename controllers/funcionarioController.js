@@ -80,7 +80,7 @@ const atualizar = async (req, res) => {
     /*Para atualizar o total de horas, precisamos decrementar antes, e depois incrementar a horario novo*/
     let id = req.body.id
     let projetoId = req.body.projetoId
-    let tarefa = await Tarefa.findByPk(id) 
+    let tarefa = await Tarefa.findByPk(id)
     await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: projetoId } })
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
@@ -101,7 +101,7 @@ const atualizar = async (req, res) => {
     let relatorio = req.body.relatorio
     await Projeto.increment({ totalHoras: horas }, { where: { id: projetoId } })
     try {
-       await Tarefa.update(
+        await Tarefa.update(
             {
                 nome: nome,
                 horaEntrada: horaEntrada,
@@ -111,14 +111,28 @@ const atualizar = async (req, res) => {
                 ano: ano,
                 horas: horas
             },
-            {where:{id:id}}
-        ).then(()=>{
-            res.redirect("/projeto/" + id)
-        })
-        
+            { where: { id: id } }
+        )
+            res.redirect("/projeto/" + projetoId)
+
     } catch (erro) {
         res.send(erro)
     }
 }
 
-module.exports = { funcionarioController, projetoController, adicionar, atualizar, editar }
+const deletar = async (req, res) => {
+    let id = req.body.id 
+    let projetoId = req.body.projetoId
+    let tarefa = await Tarefa.findByPk(id)
+    await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: projetoId } })
+    try{
+        await Tarefa.destroy({
+            where:{id:id}
+        })
+        res.redirect("/projeto/" + projetoId)
+    }catch(erro){
+        res.send(erro)
+    }
+}
+
+module.exports = { funcionarioController, projetoController, adicionar, atualizar, editar, deletar }
