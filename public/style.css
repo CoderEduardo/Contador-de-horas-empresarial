@@ -68,5 +68,16 @@ nav li a{
     margin: 25px;
 }
 
+table{
+    width: 900px;
+    margin: auto;
+    margin-top: 25px ;
+}
+
+table, tr, th, td{
+    border: solid black 3px;
+    padding: 20px;
+}
+
 
 
