@@ -6,14 +6,14 @@ const Usuario = require("../model/Usuario/Usuario")
 const adminController = async (req, res) => {
   try {
     let projetos = await Projeto.findAll()
-    res.render("admin/index", { admin: req.session.usuario.admin,projetos,login:req.session.usuario })
+    res.render("admin/index", { admin: req.session.usuario.admin,projetos,login:req.session.usuario, tag:"Admin" })
   } catch (erro) {
     res.redirect('/')
   }
 }
 
 const cadastrarProjeto = (req, res) => {
-  res.render("admin/cadastrarProjeto",{login:req.session.usuario})
+  res.render("admin/cadastrarProjeto",{login:req.session.usuario,tag:"Criar projeto"})
 }
 
 const cadastrar = async (req, res) => {
@@ -40,7 +40,7 @@ const adminProjeto = async (req,res)=>{
         where:{projetoId:projeto.id},
         include:[{model:Usuario}]
       })
-      res.render('admin/projetoAdmin',{projeto,tarefas,login:req.session.usuario})
+      res.render('admin/projetoAdmin',{projeto,tarefas,login:req.session.usuario,tag:`Projeto ${projeto.nome}`})
     }catch(erro){
       res.send(erro)
     }

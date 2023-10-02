@@ -8,7 +8,8 @@ const funcionarioController = async (req, res) => {
     res.render("funcionario/index", {
         admin: req.session.usuario.admin,
         projetos: projetos,
-        login: req.session.usuario
+        login: req.session.usuario,
+        tag:"Trabalhos"
     })
 }
 
@@ -22,7 +23,7 @@ const projetoController = async (req, res) => {
         let tarefas = await Tarefa.findAll({
             where: { projetoId: projeto.id, usuarioId:req.session.usuario.id }
         })
-        res.render("funcionario/projeto", { projeto, admin: req.session.usuario.admin, tarefas, login: req.session.usuario })
+        res.render("funcionario/projeto", { projeto, admin: req.session.usuario.admin, tarefas, login: req.session.usuario,tag:`Projeto ${projeto.nome}` })
     } catch (erro) {
         res.redirect("/funcionarios")
     }

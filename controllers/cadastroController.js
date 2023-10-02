@@ -13,7 +13,7 @@ const cadastroController = async (req, res) => {
             senha: hash,
             admin: admin
         }).then(() => {
-            res.render("index", { erroEmail: false, cadastroCompleto: true, login:req.session.usuario})
+            res.render("index", { erroEmail: false, cadastroCompleto: true, login:req.session.usuario,tag:"Cadastro feito com sucesso"})
         })
     } else {
         res.render("index", { erroEmail: true, cadastroCompleto: false, login:req.session.usuario })

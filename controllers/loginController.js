@@ -9,7 +9,7 @@ const logout = (req,res)=>{
 }
 
 const loginController = (req, res) => {
-    res.render("login")
+    res.render("login",{tag:"Login"})
 }
 
 const autenticacaoController = async (req, res) => {

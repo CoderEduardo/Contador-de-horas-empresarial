@@ -25,7 +25,7 @@ app.use(session({
 }))
 
 app.get("/",(req,res)=>{
-    res.render("index",{erroEmail:false,cadastroCompleto:false,login:req.session.usuario})
+    res.render("index",{erroEmail:false,cadastroCompleto:false,login:req.session.usuario,tag:"Criar conta"})
 })
 app.post("/",cadastroController)
 
