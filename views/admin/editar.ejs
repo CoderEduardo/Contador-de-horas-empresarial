@@ -1,1 +1,36 @@
-<h1>Página de edição</h1>
+<%- include('../partials/header.ejs') %>
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        button{
+            color: white; 
+            border: 0px; padding: 10px; 
+            font-weight: bold; 
+            border-radius: 10px;
+        }
+    </style>
+
+    <body>
+        <% if (login==1) {%>
+            <%- include('../partials/navbar.ejs') %>
+                <div style="display: flex; justify-content: center;">
+                    <div class="editar-container">
+                        <h1>Editar Projeto</h1>
+                        <form action="/atualizar" method="POST">
+                            <h3>Nome:</h3>
+                            <input type="text" name="nome" placeholder="Digite seu nome:" required>
+                            <h3>Descrição:</h3>
+                            <input type="text" name="descricao" placeholder="Descrição do projeto:" required>
+                            <br><br>
+                            <button style="background-color: green;">Editar</button>
+                            <form action="/deletar">
+                                <button style="background-color: red;">Deletar</button>
+                            </form>
+                        </form>
+                    </div>
+                </div>
+                <% }else{ %>
+                    <h1>Você não tem acesso a essa página</h1>
+                <% } %>
+    </body>
+    <%- include('../partials/footer.ejs') %>

@@ -3,6 +3,7 @@ const app = express()
 const PORTA = 8080
 const bodyParser = require("body-parser")
 const ejs = require("ejs")
+const methodOverride = require("method-override")
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(express.static("public"))
@@ -18,6 +19,8 @@ const session = require("express-session")
 const Projeto = require("./model/Projeto/Projeto")
 const Usuario = require("./model/Usuario/Usuario")
 const Tarefa = require("./model/Tarefa/Tarefa")
+
+app.use(methodOverride('_method'))
 
 app.use(session({
     secret:"banana",

@@ -50,10 +50,18 @@ const editarProjeto = async(req,res)=>{
     let id = req.params.id 
     try{
       let projeto = await Projeto.findByPk(id)
-      res.render("admin/editar",{projeto})
+      res.render("admin/editar",{projeto,tag:`Editar ${projeto.nome}`,login:req.session.usuario.admin})
     }catch(erro){
       res.send(`Ocorreu um erro ao achar o projeto: ${erro}`)
     }
 }
 
-module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto }
+const deletar = async (req,res)=>{
+
+}
+
+const atualizar = async (req,res)=>{
+
+}
+
+module.exports = { adminController, cadastrarProjeto, cadastrar, adminProjeto, editarProjeto, deletar,atualizar }

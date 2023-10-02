@@ -61,3 +61,13 @@ nav li a{
     border: solid black 2px;
     padding: 25px;
 }
+
+.editar-container{
+    width: 80%;
+    border: solid 2px black;
+    padding: 25px;
+    margin: 25px;
+}
+
+
+
