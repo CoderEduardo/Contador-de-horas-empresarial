@@ -46,7 +46,7 @@
                             <button style="background-color: green;">Atualizar Tarefa</button>
                         </form>
                         <br>
-                        <form action="/tarefa?_method=DELETE" method="POST">
+                        <form action="/tarefa?_method=DELETE" onsubmit="confirmarDelecao(this)" method="POST">
                             <input type="hidden" name="id" value="<%= tarefa.id %>">
                             <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
                             <button style="background-color: red;">Deletar Tarefa</button>
@@ -58,4 +58,15 @@
                     <h1>Você não tem acesso a essa página</h1>
                     <% } %>
     </body>
+
+    <script>
+        function confirmarDelecao(form){
+            event.preventDefault()
+            let confirmacao = confirm("Deseja realmente apagar essa tarefa?")
+            if(confirmacao){
+                form.submit()
+            }
+        }
+    </script>
+
     <%- include('../partials/footer.ejs') %>
