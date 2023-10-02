@@ -29,6 +29,7 @@
                         <input type="date" name="ano" value="<%= tarefa.ano %>">
                         <h3>Relatório:</h3>
                         <input type="hidden" name="id" value="<%= tarefa.id %>">
+                        <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
                         <textarea style="width: 500px; height: 300px;" name="relatorio"><%= tarefa.relatorio %></textarea>
                         <br><br>
                         <button style="background-color: green;">Atualizar Tarefa</button>

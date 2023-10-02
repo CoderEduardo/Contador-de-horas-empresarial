@@ -77,9 +77,11 @@ const editar = async (req, res) => {
 }
 
 const atualizar = async (req, res) => {
+    /*Para atualizar o total de horas, precisamos decrementar antes, e depois incrementar a horario novo*/
     let id = req.body.id
+    let projetoId = req.body.projetoId
     let tarefa = await Tarefa.findByPk(id) 
-    await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: id } })
+    await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: projetoId } })
     let nome = req.body.nome
     let horaEntrada = req.body.horaEntrada
     let horaSaida = req.body.horaSaida
@@ -97,6 +99,7 @@ const atualizar = async (req, res) => {
     let mesBr = anoString.substring(5, 7)
     let diaBr = anoString.substring(8, 10)
     let relatorio = req.body.relatorio
+    await Projeto.increment({ totalHoras: horas }, { where: { id: projetoId } })
     try {
        await Tarefa.update(
             {
@@ -109,9 +112,10 @@ const atualizar = async (req, res) => {
                 horas: horas
             },
             {where:{id:id}}
-        )
-        Projeto.increment({ totalHoras: horas }, { where: { id: id } })
-        res.redirect("projeto/" + id)
+        ).then(()=>{
+            res.redirect("/projeto/" + id)
+        })
+        
     } catch (erro) {
         res.send(erro)
     }
