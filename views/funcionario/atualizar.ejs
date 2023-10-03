@@ -49,6 +49,7 @@
                         <form action="/tarefa?_method=DELETE" onsubmit="confirmarDelecao(this)" method="POST">
                             <input type="hidden" name="id" value="<%= tarefa.id %>">
                             <input type="hidden" name="projetoId" value="<%= tarefa.projetoId %>">
+                            <input type="hidden" name="usuarioId" value="<%= tarefa.usuarioId %>">
                             <button style="background-color: red;">Deletar Tarefa</button>
                         </form>
                     </div>

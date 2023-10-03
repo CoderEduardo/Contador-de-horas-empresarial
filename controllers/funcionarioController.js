@@ -129,6 +129,7 @@ const deletar = async (req, res) => {
     let projetoId = req.body.projetoId
     let tarefa = await Tarefa.findByPk(id)
     await Projeto.decrement({ totalHoras: tarefa.horas }, { where: { id: projetoId } })
+    await Usuario.decrement({horasTrabalhadas:tarefa.horas}, {where:{id:req.session.usuario.id}})
     try{
         await Tarefa.destroy({
             where:{id:id}

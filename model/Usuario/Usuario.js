@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize")
+const {Sequelize, DataTypes} = require("sequelize")
 const connection = require("../database/database")
 
 const Usuario = connection.define("usuarios",{
@@ -18,7 +18,7 @@ const Usuario = connection.define("usuarios",{
         type:Sequelize.BOOLEAN
     },
     horasTrabalhadas:{
-        type:Sequelize.INTEGER,
+        type:DataTypes.INTEGER,
         defaultValue: 0
     } 
 })
